@@ -194,55 +194,44 @@ int MyString::count(char ch) const {
 // These four functions demonstrate FUNCTION OVERLOADING:
 // Same name "append", different parameter types.
 
+// ---- Function Overloading: append ----
+ 
 MyString MyString::append(const MyString& other) const {
-    // TODO: Append another MyString to this one and return the result
-    return MyString(data+ other.data);
+    return MyString(data + other.data);
 }
-
+ 
 MyString MyString::append(const char* cstr) const {
-    // TODO: Append a C-string to this one and return the result
-    return MyString(data+string(cstr));
+    return MyString(data + string(cstr));
 }
-
+ 
 MyString MyString::append(char ch) const {
-    // TODO: Append a single character and return the result
-    return MyString(data+ch);
+    return MyString(data + ch);
 }
-
+ 
 MyString MyString::append(int number) const {
-    // TODO: Append the string representation of an integer and return the result
-    // Hint: Use std::to_string()
-    return MyString(data+to_string(number));
+    return MyString(data + to_string(number));
 }
-
+ 
 // ---- Function Overloading: replace ----
-// These two functions demonstrate FUNCTION OVERLOADING:
-// Same name "replace", different parameter types.
-
+ 
 MyString MyString::replace(char oldCh, char newCh) const {
-    // TODO: Replace ALL occurrences of oldCh with newCh, return new MyString
-    string result=data;
-    for(char&c : result){
-        if(c==oldCh)c=newCh;
+    string result = data;
+    for (char& c : result) {
+        if (c == oldCh) c = newCh;
     }
     return MyString(result);
 }
-
+ 
 MyString MyString::replace(const string& oldStr, const string& newStr) const {
-    // TODO: Replace ALL occurrences of oldStr with newStr, return new MyString
-    string result=data;
-    size_t pos=0;
-    while(pos==result.find(oldStr,pos)!=string::npos){
-        result.replace(pos,oldStr.length(),newStr);
-        pos+=newStr.length();
+    string result = data;
+    size_t pos = 0;
+    while ((pos = result.find(oldStr, pos)) != string::npos) {
+        result.replace(pos, oldStr.length(), newStr);
+        pos += newStr.length();
     }
     return MyString(result);
-    // WARNING: Be careful not to create an infinite loop!
-    //          After each replacement, advance position past the new string.
 }
-
-// ---- Operator Overloading ----
-
+ 
 // ---- Operator Overloading ----
  
 MyString MyString::operator+(const MyString& other) const {
